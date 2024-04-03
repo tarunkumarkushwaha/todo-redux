@@ -68,8 +68,8 @@ function App() {
           </button>
         </div>
         <div className="todo-display shadow text-center">
-          {todo.map((a, i) => {
-            return <Todo key={i} a={a} i={i} />
+          {todo.map((item, i) => {
+            return <Todo key={i} item={item} i={i} />
           })}
         </div>
       </div>

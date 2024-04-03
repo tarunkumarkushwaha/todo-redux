@@ -92,14 +92,14 @@ button:hover {
   background-color: #f7efeffd;
   border: 1px solid #000108;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 7px;
+  right: 10px;
   width: 25px;
   padding: auto;
 }
 
 .todoCheck {
-  margin: 8px;
+  margin-inline: 8px;
   outline: none;
 }
 
@@ -124,12 +124,12 @@ button:hover {
 .tododiv {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  align-items: baseline;
   position: relative;
   background-color: #83c4f8;
   border: 2px solid #39a6ff;
   padding: 1%;
-  padding-inline: 2%;
+  padding-inline: 3%;
   border-radius: 10px;
   margin: 5px;
 }

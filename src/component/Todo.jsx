@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { deletetodo } from '../features/todos/todoSlice'
 import { modTodo } from "../features/todos/todoSlice";
 
-const Todo = ({ a, i }) => {
+const Todo = ({ item, i }) => {
   const dispatch = useDispatch()
  
   return (
@@ -12,15 +12,15 @@ const Todo = ({ a, i }) => {
         <input className="todoCheck" type="checkbox"
           onChange={(e) => {
             dispatch(modTodo({
-              value:a.data,
+              value:item.data,
               check: e.target.checked,
               id: i
             }))
           }}
         />
-        <p className={`${a.completed ? "completedtodo" : "to-do"}`}>{i + 1}.{" "}</p>
-        <p className={`${a.completed ? "completedtodo" : "to-do"}`}>
-          {a.data}
+        <p className={`${item.completed ? "completedtodo" : "to-do"}`}>{i + 1}.{" "}</p>
+        <p className={`${item.completed ? "completedtodo" : "to-do"}`}>
+          {item.data}
         </p>
         <p className="deletetodo" onClick={() => dispatch(deletetodo(i))}>X</p>
       </div>
