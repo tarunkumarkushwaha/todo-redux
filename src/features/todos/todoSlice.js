@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {todoes : JSON.parse(localStorage.getItem('items')) || []}
+const initialState =  JSON.parse(localStorage.getItem('items')) || []
 
 
 export const todoSlice = createSlice({
@@ -8,22 +8,29 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.todoes.push(action.payload)
+      state.push(action.payload)
     },
     deletetodo: (state, action) => {
-      state.todoes.splice( action.payload, 1);
-      localStorage.setItem('items', JSON.stringify(state.todoes));
+      state.splice( action.payload, 1);
+      localStorage.setItem('items', JSON.stringify(state));
     },
-    deleteall: (state) => {
-      state.todoes = []
+
+    deleteall: () => {
+      localStorage.setItem('items', JSON.stringify());
+      return []
     },
+
     modTodo: (state,action) => {
-      console.log("bada load ba",action.payload)
+      const item = {
+        data: action.payload.value,
+        completed: action.payload.check
+      }
+      state.splice(action.payload.id, 1, item);
+      localStorage.setItem('items', JSON.stringify(state));
     },
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { addTodo ,deletetodo,deleteall,modTodo } = todoSlice.actions
 
 export default todoSlice.reducer

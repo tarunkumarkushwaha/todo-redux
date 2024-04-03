@@ -5,12 +5,14 @@ import { modTodo } from "../features/todos/todoSlice";
 
 const Todo = ({ a, i }) => {
   const dispatch = useDispatch()
+ 
   return (
     <>
       <div className="tododiv">
         <input className="todoCheck" type="checkbox"
           onChange={(e) => {
             dispatch(modTodo({
+              value:a.data,
               check: e.target.checked,
               id: i
             }))

@@ -10,12 +10,10 @@ function App() {
     data: "",
     completed: false
   });
-  // const [todo, setTodo] = useState(JSON.parse(localStorage.getItem('items')) || []);
 
-  const todo = useSelector((state) => state.todoes)
+  const todo = useSelector((state) => state.TODO)
 
   const dispatch = useDispatch()
-
 
   const displaychange = (e) => {
     setItem({
@@ -25,9 +23,6 @@ function App() {
   };
 
   const addtodo = () => {
-    // setTodo((olditems) => {
-    //   return [...olditems, item]
-    // })
     dispatch(addTodo(item))
     setItem({
       data: "",
@@ -35,19 +30,11 @@ function App() {
     });
     localStorage.setItem("items", JSON.stringify(todo))
   }
-  const Delete = (a) => {
-    setTodo([])
-    localStorage.clear()
-  }
-  const deletetodo = (a) => {
-    setTodo(todo.filter((e) => { return e !== a }))
-    localStorage.setItem('items', JSON.stringify(todo));
-  }
+
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
       e.preventDefault();
-      // addtodo();
-      console.log("lol")
+      addtodo();
     }
   }
 
@@ -82,7 +69,7 @@ function App() {
         </div>
         <div className="todo-display shadow text-center">
           {todo.map((a, i) => {
-            return <Todo key={i} a={a} i={i} deletetodo={deletetodo} />
+            return <Todo key={i} a={a} i={i} />
           })}
         </div>
       </div>
